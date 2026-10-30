@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Mini App</title>
+    <!-- Подключаем официальный скрипт Telegram WebApp API -->
+    <script src="https://telegram.org"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: var(--tg-theme-bg-color, #ffffff); /* Адаптация под тему TG */
+            color: var(--tg-theme-text-color, #000000);
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: var(--tg-theme-button-color, #2481cc);
+            color: var(--tg-theme-button-text-color, #ffffff);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="main-btn">Нажми меня</button>
+
+    <script>
+        // Инициализируем Telegram WebApp
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Расширяем приложение на весь экран
+
+        const btn = document.getElementById('main-btn');
+
+        btn.addEventListener('click', () => {
+            // Отправляем данные боту и закрываем мини-апп
+            tg.sendData("Кнопка была успешно нажата!");
+            tg.close();
+        });
+    </script>
+</body>
+</html>
+
